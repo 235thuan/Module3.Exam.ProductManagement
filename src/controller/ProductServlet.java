@@ -75,12 +75,6 @@ public class ProductServlet extends HttpServlet {
     private void listProduct(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
 
-//        ArrayList pid_list = new ArrayList();
-//        String pid = request.getParameter("pid");
-//        String search = "select * from product where productName='"+pid+"'";
-//        request.setAttribute("piList", pid_list);
-
-
         int page = 1;
         int recordsPerPage = 3;
         if (request.getParameter("page") != null)
@@ -102,6 +96,7 @@ public class ProductServlet extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("views/create.jsp");
         dispatcher.forward(request, response);
     }
+
 
     private void showEditForm(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, ServletException, IOException {
@@ -139,16 +134,20 @@ public class ProductServlet extends HttpServlet {
 
     private void updateProduct(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
-//        CategoryServiceImpl dao = new CategoryServiceImpl();
-//        Category categories = dao.getCategoryName();
 
-
+        CategoryServiceImpl dao2 = new CategoryServiceImpl();
+        List<Category> categories = dao2.selectAllCategories();
+        request.setAttribute("categories",categories);
 
         int id = Integer.parseInt(request.getParameter("productId"));
-        String productName = request.getParameter("productName");
         int productPrice = Integer.parseInt(request.getParameter("productPrice"));
+        String productName = request.getParameter("productName");
+        int productQuantity = Integer.parseInt(request.getParameter("productQuantity"));
+        String productDescription = request.getParameter("productDescription");
+        String productColour = request.getParameter("productColour");
+        String categoryName = request.getParameter("categoryName");
 
-        Product product = new Product(id, productName, productPrice);
+        Product product = new Product(id, productName, productPrice,productQuantity,productColour,productDescription,categoryName);
         productServiceimpl.updateProduct(product);
         RequestDispatcher dispatcher = request.getRequestDispatcher("views/edit.jsp");
         dispatcher.forward(request, response);

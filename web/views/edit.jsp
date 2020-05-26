@@ -64,10 +64,11 @@
                 <th>Category:</th>
                 <td>
 
-                <input type="text" name="categoryName" size="45"
-                       value="<c:out value='${categoryName}' />"/>
+                    <input type="text" name="categoryName" size="45"
+                           value="<c:out value='${product.categoryName}' />"/>
                 </td>
             </tr>
+
             <tr>
                 <td colspan="2" align="center">
                     <input type="submit" value="Save"/>
@@ -75,6 +76,7 @@
             </tr>
         </table>
     </form>
+
 </div>
 </body>
 </html>

@@ -31,7 +31,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     public List<Category> selectAllCategories() {
-        List<Category> caregory = new ArrayList<>();
+        List<Category> category = new ArrayList<>();
         try (Connection connection = getConnection();
 
              PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_CATEGORIES);) {
@@ -41,12 +41,12 @@ public class CategoryServiceImpl implements CategoryService {
             while (rs.next()) {
                 int categoryId = rs.getInt("categoryId");
                 String categoryName = rs.getString("categoryName");
-                caregory.add(new Category(categoryId,categoryName));
+                category.add(new Category(categoryId,categoryName));
             }
         } catch (SQLException e) {
             printSQLException(e);
         }
-        return caregory;
+        return category;
     }
 
     private void printSQLException(SQLException ex) {

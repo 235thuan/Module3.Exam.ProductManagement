@@ -40,8 +40,10 @@
                 </td>
             </tr>
         </c:forEach>
+
+
     </table>
-<div>
+    <div>
 
 
         <c:if test="${currentPage !=1}">
@@ -55,7 +57,7 @@
             <li style="display: inline">
                 <c:choose>
                     <c:when test="${currentPage eq i}">
-                        <a >${i}
+                        <a>${i}
                         </a>
                     </c:when>
                     <c:otherwise>
@@ -73,7 +75,7 @@
             </li>
         </c:if>
 
-</div>
+    </div>
 </div>
 </body>
 </html>
