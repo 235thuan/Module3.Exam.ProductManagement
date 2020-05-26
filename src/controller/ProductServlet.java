@@ -120,7 +120,7 @@ public class ProductServlet extends HttpServlet {
         int productQuantity = Integer.parseInt(request.getParameter("productQuantity"));
         String productDescription = request.getParameter("productDescription");
         String productColour = request.getParameter("productColour");
-        String categoryName = request.getParameter("categoryName");
+       String categoryName = request.getParameter("categoryName");
 
         CategoryServiceImpl dao = new CategoryServiceImpl();
         List<Category> listCategory = dao.selectAllCategories();

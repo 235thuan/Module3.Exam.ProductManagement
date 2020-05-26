@@ -50,10 +50,7 @@
             <tr>
                 <th>Category:</th>
                 <td>
-                   <select>
-                       <option value="phone">Phone</option>
-                       <option value="television">Television</option>
-                   </select>
+                    <input type="text" name="categoryName" id="categoryName" size="45"/>
                 </td>
             </tr>
             <tr>

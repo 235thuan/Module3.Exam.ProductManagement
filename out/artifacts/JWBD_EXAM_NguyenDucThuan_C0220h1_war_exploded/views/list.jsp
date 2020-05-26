@@ -41,6 +41,39 @@
             </tr>
         </c:forEach>
     </table>
+<div>
+
+
+        <c:if test="${currentPage !=1}">
+            <li style="display: inline">
+                <a href="product?page=${currentPage -1}">
+                </a>
+
+            </li>
+        </c:if>
+        <c:forEach begin="1" end="${noOfPages}" var="i">
+            <li style="display: inline">
+                <c:choose>
+                    <c:when test="${currentPage eq i}">
+                        <a >${i}
+                        </a>
+                    </c:when>
+                    <c:otherwise>
+                        <a href="product?page=${i}">${i}
+                        </a>
+                    </c:otherwise>
+                </c:choose>
+
+            </li>
+        </c:forEach>
+        <c:if test="${currentPage} <= ${noOfpages}">
+            <li style="display: inline">
+                <a href="product?page=${currentPage +1}">
+                </a>
+            </li>
+        </c:if>
+
+</div>
 </div>
 </body>
 </html>

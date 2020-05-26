@@ -51,9 +51,6 @@
                 <th>Category:</th>
                 <td>
                     <input type="text" name="categoryName" id="categoryName" size="45"/>
-<%--                    <c:forEach var="category" items="${listCategory}">--%>
-<%--                        <c:out value="${category.categoryName}"></c:out>--%>
-<%--                    </c:forEach>--%>
                 </td>
             </tr>
             <tr>
