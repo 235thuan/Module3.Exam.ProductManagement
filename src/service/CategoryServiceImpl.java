@@ -99,4 +99,22 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
 
+
+
+    private PreparedStatement statement;
+    private Connection connection;
+
+    public Category getCategoryName() throws SQLException {
+        statement = connection.prepareStatement("select categoryName from category");
+        ResultSet resultSet = statement.executeQuery();
+        resultSet.first();
+        return parseResultSet(resultSet);
+    }
+    private Category parseResultSet(ResultSet resultSet) throws SQLException {
+        Category category = new Category();
+        category.setCategoryId(resultSet.getInt("categoryId"));
+        category.setCategoryName(resultSet.getString("categoryName"));
+        return category;
+    }
+
 }

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "ProductServlet", urlPatterns = "/product")
@@ -73,6 +74,13 @@ public class ProductServlet extends HttpServlet {
 
     private void listProduct(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
+
+//        ArrayList pid_list = new ArrayList();
+//        String pid = request.getParameter("pid");
+//        String search = "select * from product where productName='"+pid+"'";
+//        request.setAttribute("piList", pid_list);
+
+
         int page = 1;
         int recordsPerPage = 3;
         if (request.getParameter("page") != null)
@@ -115,7 +123,7 @@ public class ProductServlet extends HttpServlet {
         String categoryName = request.getParameter("categoryName");
 
         CategoryServiceImpl dao = new CategoryServiceImpl();
-        List<Category> listCategory=dao.selectAllCategories();
+        List<Category> listCategory = dao.selectAllCategories();
 
         Product newProduct = new Product(productName,
                 productPrice,
@@ -124,13 +132,18 @@ public class ProductServlet extends HttpServlet {
                 productDescription,
                 categoryName);
         productServiceimpl.insertProduct(newProduct);
-        request.setAttribute("listCategory",listCategory);
+        request.setAttribute("listCategory", listCategory);
         RequestDispatcher dispatcher = request.getRequestDispatcher("views/create.jsp");
         dispatcher.forward(request, response);
     }
 
     private void updateProduct(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
+//        CategoryServiceImpl dao = new CategoryServiceImpl();
+//        Category categories = dao.getCategoryName();
+
+
+
         int id = Integer.parseInt(request.getParameter("productId"));
         String productName = request.getParameter("productName");
         int productPrice = Integer.parseInt(request.getParameter("productPrice"));

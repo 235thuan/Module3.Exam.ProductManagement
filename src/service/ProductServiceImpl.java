@@ -89,6 +89,10 @@ public class ProductServiceImpl implements ProductService {
     }
 
     public List<Product> selectAllProducts(int offset, int noOfRecords) {
+
+
+
+
         List<Product> products = new ArrayList<>();
         String query = "select SQL_CALC_FOUND_ROWS * from product limit "
                 + offset + ", " + noOfRecords;
@@ -171,7 +175,5 @@ public class ProductServiceImpl implements ProductService {
         }
     }
 
-//    String pid = request.getParameter("pid");
-//    string search = "select * from product where productName='"+pid+"'";
 
 }
